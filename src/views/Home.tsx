@@ -4,7 +4,7 @@ import React from "react";
 export const HomeView = () => {
   return (
     <div>
-      <Card title="Test Technique Della" bordered={false}>
+      <Card bordered={false}>
         <div>
           <Row justify="center">
             <Col>
@@ -21,39 +21,44 @@ export const HomeView = () => {
             <p>
               Cette application permet de :
               <ul>
-                <li> Gérer des documents: </li>
-                <ul>
-                  <li>Charger des documents textuels</li>
-                  <li>Consulter la liste des documents</li>
-                  <li>Consulter les metadonnées d'un document</li>
-                  <li>Mettre à jour les metadonnées d'un document</li>
-                  <li>Appliquer un Playbook de questions à un document</li>
-                  <li>Gérer les réponses d'un document</li>
-                  <ul>
-                    <li>Consulter la liste des réponses</li>
-                    <li>Corriger les réponses</li>
-                    <li>Valider les réponses</li>
-                    <li>Ajouter un commentaire</li>
-                    <li>Créer une exception</li>
-                  </ul>
-                  <li>Supprimer un document</li>
-                </ul>
-
-                <li> Gérer des playbooks: </li>
-                <ul>
-                  <li>Consulter la liste des playbooks</li>
-                  <li>Consulter les informations d'un playbook</li>
-                  <li>Mettre à jour les informations d'un playbook</li>
-                  <ul>
-                    <li>Ajouter une nouvelle section</li>
-                    <li>Modifier une section</li>
-                    <li>Supprimer une section</li>
-                    <li>Ajouter une nouvelle question</li>
-                    <li>Modifier une question</li>
-                    <li>Supprimer une question</li>
-                  </ul>
-                  <li>Supprimer un playbook</li>
-                </ul>
+                <Row>
+                  <Col span={12}>
+                    <li> Gérer des documents: </li>
+                    <ul>
+                      <li>Charger des documents textuels</li>
+                      <li>Consulter la liste des documents</li>
+                      <li>Consulter les metadonnées d'un document</li>
+                      <li>Mettre à jour les metadonnées d'un document</li>
+                      <li>Appliquer un Playbook de questions à un document</li>
+                      <li>Gérer les réponses d'un document</li>
+                      <ul>
+                        <li>Consulter la liste des réponses</li>
+                        <li>Corriger les réponses</li>
+                        <li>Valider les réponses</li>
+                        <li>Ajouter un commentaire</li>
+                        <li>Créer une exception</li>
+                      </ul>
+                      <li>Supprimer un document</li>
+                    </ul>
+                  </Col>
+                  <Col span={12}>
+                    <li> Gérer des playbooks: </li>
+                    <ul>
+                      <li>Consulter la liste des playbooks</li>
+                      <li>Consulter les informations d'un playbook</li>
+                      <li>Mettre à jour les informations d'un playbook</li>
+                      <ul>
+                        <li>Ajouter une nouvelle section</li>
+                        <li>Modifier une section</li>
+                        <li>Supprimer une section</li>
+                        <li>Ajouter une nouvelle question</li>
+                        <li>Modifier une question</li>
+                        <li>Supprimer une question</li>
+                      </ul>
+                      <li>Supprimer un playbook</li>
+                    </ul>
+                  </Col>
+                </Row>
               </ul>
             </p>
             <p>

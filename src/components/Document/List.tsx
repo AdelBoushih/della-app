@@ -114,16 +114,22 @@ const DocumentList = ({
   const getMenu = (record: Document) => {
     return (
       <Menu>
-        <Menu.Item
-          key="1"
-          icon={<MessageOutlined />}
-          style={{ color: "#4cd137" }}
-          onClick={() => {
-            history.push(`/documents/${record.id}/answers`);
-          }}
-        >
-          Show Answers
-        </Menu.Item>
+        {record.status === DocumentStatus.READY_FOR_ANSWERING ? (
+          <Menu.Item
+            key="1"
+            icon={<MessageOutlined />}
+            style={{ color: "#4cd137" }}
+            onClick={() => {
+              history.push(`/documents/${record.id}/answers`);
+              history.push({
+                pathname: `/documents/${record.id}/answers`,
+                state: { document: record },
+              });
+            }}
+          >
+            Show Answers
+          </Menu.Item>
+        ) : null}
         <Menu.Item
           key="2"
           icon={<PartitionOutlined />}
