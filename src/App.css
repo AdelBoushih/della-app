@@ -1,0 +1,72 @@
+@import "~antd/dist/antd.css";
+
+.maxHeight {
+  max-height: 200px;
+}
+.mb-2 {
+  margin-bottom: 10px;
+}
+/* .actions {
+  display: none;
+  transition: all 0.5 ease;
+} */
+.title {
+  color: rgb(75, 74, 74);
+}
+.logo > img {
+  transition: all 0.5s ease;
+}
+.responsive-table {
+  overflow-x: auto;
+}
+.mt-2 {
+  margin-bottom: 20px;
+}
+
+.home-description {
+  padding: 15px;
+  border-left: 4px solid rgb(11, 199, 233);
+  background: rgb(235, 234, 234);
+  margin-top: 10px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.section-container {
+  position: relative;
+  border-left: 4px solid #1890ff;
+  padding: 8px;
+  margin: 8px 0px;
+}
+
+.close-section-button {
+  position: absolute;
+  top: 0;
+  right: 4px;
+}
+
+.confidence-text {
+  font-size: 12px;
+  color: rgb(196, 196, 196);
+  margin-right: 4px;
+}
+.ant-collapse-header {
+  padding: 0;
+  color: rgb(79, 149, 241) !important;
+  font-size: 12px;
+}
+.della {
+  background-color: #1890ff;
+  color: #fff;
+}
+
+.edit-answer-button {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
