@@ -7,6 +7,7 @@ export interface AnswerMetadata {
   };
   predictions: {
     confidence: number;
+    isSilent: boolean;
     normalizedValue: string;
     exception: Boolean;
     textSelection: TextSelection;

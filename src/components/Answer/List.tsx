@@ -43,7 +43,7 @@ const AnswerList = ({
         Object.entries(answers).map((entry) => ({
           ...entry[1],
           predictions: entry[1].predictions.filter(
-            (prediction) => !prediction.textSelection.isSilent
+            (prediction) => !prediction.isSilent
           ),
           questionId: entry[0],
         }))
