@@ -4,10 +4,20 @@ import { DocumentsState } from "../../store/documents/types";
 import { AnswerMetadata } from "../../types/Answer";
 import { ApplicationState } from "../../store";
 import { useEffect, useState } from "react";
-import { Form, Button, Modal, Divider, Select, Row, Col } from "antd";
+import {
+  Form,
+  Button,
+  Modal,
+  Divider,
+  Select,
+  Row,
+  Col,
+  Typography,
+} from "antd";
 
 import { FormInput } from "../FormInput";
 
+const { Text } = Typography;
 const { Option } = Select;
 
 const layout = {
@@ -108,11 +118,15 @@ const CorrectAnswer = ({
         id="correct-answer-form"
       >
         <Divider orientation="left">Choose an Answer </Divider>
-        <Row justify="center">
-          <Col>
+
+        <Row justify="end">
+          <Col span={4}>
+            <Text>Predictions:</Text>
+          </Col>
+          <Col span={20}>
             <Select
               placeholder="Pick an answer"
-              style={{ width: 400 }}
+              style={{ width: 810 }}
               onChange={(value: string) => {
                 onAnswerChoice(value);
               }}
@@ -125,11 +139,11 @@ const CorrectAnswer = ({
             </Select>
           </Col>
         </Row>
-        <Divider orientation="left">New answer</Divider>
+        <Divider orientation="left">Or Type a New Answer</Divider>
 
         <FormInput
-          placeholder="Correct answer..."
-          label="Correct answer"
+          placeholder="Type answer..."
+          label="Manual Answer: "
           value={correctedAnswer}
           onChange={onAnswerChange}
         />
