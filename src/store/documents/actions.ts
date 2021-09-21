@@ -1,5 +1,5 @@
 import { action } from "typesafe-actions";
-import { Answer, TextSelection } from "../../types/Answer";
+import { Answer, UserTextSelection } from "../../types/Answer";
 import { DocumentsActionTypes, Document, Metadata } from "./types";
 
 export const fetchRequest = () => action(DocumentsActionTypes.FETCH_REQUEST);
@@ -31,7 +31,7 @@ export const updateMetadataSuccess = (metadata: Metadata) =>
 export const correctAnswer = (payload: {
   documentId: string;
   questionId: string;
-  userTextSelections: TextSelection[];
+  userTextSelections: UserTextSelection[];
   comment?: string;
   exception?: boolean;
 }) => action(DocumentsActionTypes.CORRECT_ANSWER, payload);

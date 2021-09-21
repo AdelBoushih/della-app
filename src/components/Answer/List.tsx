@@ -43,7 +43,7 @@ const AnswerList = ({
         Object.entries(answers).map((entry) => ({
           ...entry[1],
           predictions: entry[1].predictions.filter(
-            (prediction) => !prediction.isSilent
+            (prediction) => !prediction.textSelection.isSilent
           ),
           questionId: entry[0],
         }))
@@ -55,7 +55,7 @@ const AnswerList = ({
     <>
       {documentAnswers.map((answer) => (
         <Card style={{ marginBottom: "8px" }}>
-          <Title level={4}>{answer.input?.question}</Title>
+          <Title level={4}>Question: {answer.input?.question}</Title>
           {answer.predictions?.length ? (
             <div>
               <Text>

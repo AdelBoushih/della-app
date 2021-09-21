@@ -1,11 +1,14 @@
 import { correctAnswer } from "../../store/documents/actions";
 import { connect } from "react-redux";
 import { DocumentsState } from "../../store/documents/types";
+import { TextSelection } from "../../types/Answer";
 import { ApplicationState } from "../../store";
 import { useEffect, useState } from "react";
-import { Form, Button, Modal, Divider } from "antd";
+import { Form, Button, Modal, Divider, Select, Row, Col } from "antd";
 
 import { FormInput } from "../FormInput";
+
+const { Option } = Select;
 
 const layout = {
   labelCol: { span: 4, sm: 6 },
@@ -38,7 +41,6 @@ const CorrectAnswer = ({
   questionId,
 }: AllProps) => {
   const [correctedAnswer, setCorrectedAnswer] = useState("");
-  const [evidence, setEvidence] = useState("");
   const [requestSent, setRequestSent] = useState(false);
 
   const [form] = Form.useForm();
@@ -56,12 +58,11 @@ const CorrectAnswer = ({
       questionId,
       userTextSelections: [
         {
+          isSilent: false,
           text: correctedAnswer,
-          evidence,
           textStartOffset: 0,
           textEndOffset: 0,
-          evidenceStartOffset: 0,
-          evidenceEndOffset: 0,
+          userTextCorrection: correctedAnswer,
         },
       ],
     });
@@ -70,10 +71,6 @@ const CorrectAnswer = ({
 
   const onAnswerChange = (event: any) => {
     setCorrectedAnswer(event.target.value);
-  };
-
-  const onEvidenceChange = (event: any) => {
-    setEvidence(event.target.value);
   };
 
   return (
@@ -112,12 +109,6 @@ const CorrectAnswer = ({
           label="Correct answer"
           value={correctedAnswer}
           onChange={onAnswerChange}
-        />
-        <FormInput
-          placeholder="Evidence..."
-          label="Evidence"
-          value={evidence}
-          onChange={onEvidenceChange}
         />
       </Form>
     </Modal>
