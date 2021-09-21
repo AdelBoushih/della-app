@@ -13,7 +13,7 @@ export interface AnswerMetadata {
     textSelection: TextSelection;
   }[];
   userCorrection: {
-    textSelections: UserTextSelection;
+    textSelections: UserTextSelection[];
     normalizedValue: string;
     exception: Boolean;
     comment: string;

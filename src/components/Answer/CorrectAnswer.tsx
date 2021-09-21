@@ -1,7 +1,7 @@
 import { correctAnswer } from "../../store/documents/actions";
 import { connect } from "react-redux";
 import { DocumentsState } from "../../store/documents/types";
-import { TextSelection } from "../../types/Answer";
+import { AnswerMetadata } from "../../types/Answer";
 import { ApplicationState } from "../../store";
 import { useEffect, useState } from "react";
 import { Form, Button, Modal, Divider, Select, Row, Col } from "antd";
@@ -22,6 +22,7 @@ interface CreateModalProps {
   handleCancel: () => void;
   onRequestFinished: (type: string, message: string) => void;
   questionId: string;
+  answer: AnswerMetadata;
 }
 
 interface PropsFromDispatch {
@@ -39,6 +40,7 @@ const CorrectAnswer = ({
   correctAnswer,
   loading,
   questionId,
+  answer,
 }: AllProps) => {
   const [correctedAnswer, setCorrectedAnswer] = useState("");
   const [requestSent, setRequestSent] = useState(false);
@@ -51,7 +53,6 @@ const CorrectAnswer = ({
       setRequestSent(false);
     }
   }, [loading]);
-
   const onFinish = () => {
     correctAnswer({
       documentId,
@@ -71,6 +72,10 @@ const CorrectAnswer = ({
 
   const onAnswerChange = (event: any) => {
     setCorrectedAnswer(event.target.value);
+  };
+
+  const onAnswerChoice = (value: string) => {
+    setCorrectedAnswer(value);
   };
 
   return (
@@ -102,6 +107,24 @@ const CorrectAnswer = ({
         onFinish={onFinish}
         id="correct-answer-form"
       >
+        <Divider orientation="left">Choose an Answer </Divider>
+        <Row justify="center">
+          <Col>
+            <Select
+              placeholder="Pick an answer"
+              style={{ width: 400 }}
+              onChange={(value: string) => {
+                onAnswerChoice(value);
+              }}
+            >
+              {answer?.predictions.map((prediction, index) => (
+                <Option value={prediction.textSelection.text}>
+                  {prediction.textSelection.text}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+        </Row>
         <Divider orientation="left">New answer</Divider>
 
         <FormInput

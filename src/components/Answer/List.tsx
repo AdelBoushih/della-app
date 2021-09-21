@@ -26,7 +26,8 @@ const AnswerList = ({
   fetchAnswers,
   onRequestFinished,
 }: AllProps) => {
-  const [selectedAnswer, setSelectedAnswer] = useState<string>();
+  const [selectedAnswerId, setSelectedAnswerId] = useState<string>();
+  const [selectedAnswer, setSelectedAnswer] = useState<AnswerMetadata>();
   const [showCorrectAnswerModal, setShowCorrectAnswerModal] = useState(false);
 
   const [documentAnswers, setDocumentAnswers] = useState<
@@ -117,6 +118,17 @@ const AnswerList = ({
                   </div>
                 </Panel>
               </Collapse>
+
+              {answer.userCorrection?.textSelections.length ? (
+                <div style={{ margin: "16px 0 8px 0" }}>
+                  <Title level={5}>Manual Correction</Title>
+                  {answer.userCorrection.textSelections.map(
+                    (textSelection, index) => (
+                      <Text key={index}>{textSelection.text}</Text>
+                    )
+                  )}
+                </div>
+              ) : null}
             </div>
           ) : null}
           <div className="edit-answer-button">
@@ -126,17 +138,19 @@ const AnswerList = ({
               shape="circle"
               icon={<EditOutlined />}
               onClick={() => {
-                setSelectedAnswer(answer.questionId);
+                setSelectedAnswerId(answer.questionId);
+                setSelectedAnswer(answer);
                 setShowCorrectAnswerModal(true);
               }}
             />
           </div>
         </Card>
       ))}
-      {documentId && selectedAnswer ? (
+      {documentId && selectedAnswerId && selectedAnswer ? (
         <CorrectAnswer
           documentId={documentId}
-          questionId={selectedAnswer}
+          questionId={selectedAnswerId}
+          answer={selectedAnswer}
           isModalVisible={showCorrectAnswerModal}
           handleOk={() => setShowCorrectAnswerModal(false)}
           handleCancel={() => setShowCorrectAnswerModal(false)}
