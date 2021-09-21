@@ -34,9 +34,6 @@ export const HomeView = () => {
                       <ul>
                         <li>Consulter la liste des réponses</li>
                         <li>Corriger les réponses</li>
-                        <li>Valider les réponses</li>
-                        <li>Ajouter un commentaire</li>
-                        <li>Créer une exception</li>
                       </ul>
                       <li>Supprimer un document</li>
                     </ul>
